@@ -1,6 +1,18 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: galdon
+      POSTGRES_USER: galdon
+      POSTGRES_PASSWORD: postgredb
+    ports:
+      - "5432:5432"
+    volumes:
+      - /Users/galdon/git/TaskManagementApp/db_dump.sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - app-network
   backend:
     build:
       context: ./TaskManagementBE
@@ -8,7 +20,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/galdon
+      - SPRING_DATASOURCE_USERNAME=galdon
+      - SPRING_DATASOURCE_PASSWORD=postgredb
+    depends_on:
+        - db
     networks:
       - app-network
 
