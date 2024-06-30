@@ -10,13 +10,13 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - /Users/galdon/git/TaskManagementApp/db_dump.sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./db_dump.sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - app-network
   backend:
     build:
       context: ./TaskManagementBE
-      dockerfile: Dockerfile
+      dockerfile: ../TaskManagementBE/Dockerfile
     ports:
       - "8080:8080"
     environment:
@@ -31,7 +31,7 @@ services:
   frontend:
     build:
       context: ./TaskManagementFE
-      dockerfile: Dockerfile
+      dockerfile: ../TaskManagementFE/Dockerfile
     ports:
       - "80:80"
     depends_on:

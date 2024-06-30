@@ -1,0 +1,22 @@
+name: Clone Backend Repository
+
+on:
+  push:
+    branches:
+      - main  # Ajusta el nombre de la rama si es necesario
+
+jobs:
+  clone-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Backend Repository
+        uses: actions/checkout@v2
+        with:
+          repository: mgaldon17/TaskManagementBE
+          path: ./TaskManagementBE
+          token: ${{ secrets.GH_PAT }}
+
+
+      - name: Check Cloned Files
+        run: ls -R ./TaskManagementBE
