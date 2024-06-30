@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main  # Ajusta el nombre de la rama si es necesario
+  workflow_dispatch:
 
 jobs:
   clone-backend:
