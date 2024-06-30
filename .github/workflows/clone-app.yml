@@ -11,13 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Backend Repository
-        uses: actions/checkout@v2
-        with:
-          repository: mgaldon17/TaskManagementBE
-          path: ./TaskManagementBE
-          token: ${{ secrets.GH_PAT }}
-
-
-      - name: Check Cloned Files
-        run: ls -R ./TaskManagementBE
+      - name: Clone Backend Repository
+        run: git clone https://github.com/tu-usuario/TaskManagementBE ./TaskManagementBE
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
