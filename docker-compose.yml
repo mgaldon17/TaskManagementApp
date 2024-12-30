@@ -8,6 +8,7 @@ services:
     environment:
       - GITHUB_USERNAME=${GITHUB_USERNAME}
       - GITHUB_TOKEN=${GITHUB_TOKEN}
+    command: ["sh", "-c", "echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin"]
     networks:
       - app-network
 
@@ -17,6 +18,7 @@ services:
       - "3000:80"
     depends_on:
       - backend
+    command: [ "sh", "-c", "echo $GITHUB_TOKEN | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin" ]
     networks:
       - app-network
 
