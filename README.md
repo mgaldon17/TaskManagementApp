@@ -13,18 +13,16 @@ Before you can run this application, you need to have the following installed on
 
 Follow these steps to run the application:
 
-1. Clone the backend and frontend repositories:
+1. Ask the developer to provide a new token to pull the images from GitHub
 
-   Run the `clone_repos.sh` script. This script clones the backend and frontend repositories into the `TaskManagementBE` and `TaskManagementFE` directories, respectively.
+   Once you have the new token, add it to the `.env` file as follows:
 
-   ```bash
-   chmod +x clone_repos.sh
-   ./clone_repos.sh
-   ```
+   `GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxx`
 
-   Ensure that you have `git` installed and that you have the necessary permissions to clone the repositories.
+   Substitute `ghp_xxxxxxxxxxxxxxxx` for the token.
 
-2. Run the application using Docker Compose:
+   
+3. Run the application using Docker Compose:
 
    Navigate to the directory containing the `docker-compose.yml` file and run the following command:
 
